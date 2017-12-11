@@ -11,6 +11,12 @@
 
 HTTP stands for hypertext transfer protocol.
 
+### Verb + Path
+
+### Request Headers
+
+### Request Body
+
 ### Request & Response: The Role of the Server
 
 Before we start writing our first server-side applications, let's take a moment to think about what a server does. As we know them, servers are entities that deliver or serve data and webpages to users' browsers.
