@@ -64,14 +64,16 @@ Whenever we navigate to a website, we are making a `GET` request. When we naviga
 
 ##### CRUD (10 min, 0:40)
 
-CRUD is an acronym for operations involving data: Create, Read, Update, and Destroy. It is simply the features of an application that involves seeing and changing data. It is how developers conceptualize reading and writing data in web applications, especially ones that involve a server persisting data in a database. We will be repeatedly implementing CRUD functionality in our apps during this course.
+CRUD is an acronym for operations involving data: Create, Read, Update, and Destroy. These CRUD actions involve the server application interacting with the database to retrieve and/or change data.
+
+CRUD is simply the set of features of an application that involve seeing and changing data. It is often how developers conceptualize reading and writing data in web applications, especially ones that involve a server persisting data in a database. We will be repeatedly implementing CRUD functionality in our apps during this course.
 
 |CRUD   |  Verb   |URL Path examples|Database Action|
 |-------|---------|-----------------|--------------|
 |READ   |GET      |  `/tacos`       | Retrieve data|
 |CREATE |POST     |  `/tacos`       | Create new data|
 |UPDATE |PUT/PATCH|  `/tacos/6`     | Update existing data|
-|DESTROY|DELETE   |  `/tacos/7`     ||
+|DESTROY|DELETE   |  `/tacos/7`     | Delete existing data|
 
 > Assume /tacos/6 refers to one variety of taco (e.g. carne asada) and /tacos/7 refers to another variety of taco (e.g. grilled cactus)
 
@@ -97,6 +99,7 @@ Node JavaScript is packaged up into modules. Let's create our first node project
 
 <!-- npm init -->
 <!-- npm install lodash exercise -->
+
 ## Break (10min, 1:00)
 
 ## You Do: Your First Node Project (10min, 1:10)
@@ -113,7 +116,7 @@ Node JavaScript is packaged up into modules. Let's create our first node project
 
 ### Review
 
-1. What did `npm init` do? 
+1. What did `npm init` do?
 2. What file(s) appeared? What were the contents?
 3. How did the `node` command work?
 
