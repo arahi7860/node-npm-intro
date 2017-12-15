@@ -1,6 +1,7 @@
 # Intro to Server Applications, HTTP, NodeJS, and npm
 
 ## Learning Objectives
+
   - Describe the role of the server
   - Describe the request/response paradigm
   - Identify high-level differences between server-side and client-side Javascript
@@ -16,7 +17,7 @@ If we're not writing JavaScript *for* our browsers to run, then what exactly are
 
 ## Turn & Talk (5 min, 0:10)
 
-With a person next to you, spend a 2-3 minutes talking about what a server does. Please feel free to search on the web.
+With a person next to you, spend 2-3 minutes talking about what a server does, or what things you associate with the server. Please feel free to search on the web, if you feel like don't.
 
 Afterwards, we'll share and discuss how this relates to full stack web development.
 
