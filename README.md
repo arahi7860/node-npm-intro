@@ -40,10 +40,11 @@ HTTP (1.1) is a stateless protocol which means that its connection doesn't have 
 
 A stateful protocol, like a websocket connection, maintains an open connection in a socket that listens for messages that are transmitted or 'pushed' to the socket. Think about notifications on your phone. A server 'pushes' these updates to your phone-- you don't have to request them. HTTP 2.0 has a request-push model which is a stateful connection protocol.
 
+### Additional Reading on TCP
 
 <details>
   <summary>HTTP over TCP</summary>
-  <p> HTTP operates over TCP. When we navigate to a website, a TCP connection is established at a specific port, which is almost always going to be port `80` or `443` with https. </p>
+  <p> HTTP operates over TCP. When we navigate to a website, a TCP connection is established at a specific port, which is almost always going to be port <code>80</code> for <code>http</code> or <code>443</code> with <code>https</code>. </p>
   <ul>
     <li>https://www.diffen.com/difference/TCP_vs_UDP</li>
     <li>https://www.quora.com/Why-does-Netflix-use-TCP-and-not-UDP-for-its-streaming-video</li>
