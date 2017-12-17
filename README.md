@@ -99,9 +99,6 @@ Node JavaScript is server-side JavaScript. Node software is running in a system 
 
 Node JavaScript is packaged up into modules. Let's create our first node project.
 
-<!-- npm init -->
-<!-- npm install lodash exercise -->
-
 ## Break (10min, 1:00)
 
 ## You Do: Your First Node Project (10min, 1:10)
@@ -151,7 +148,7 @@ const variousBrownBears = [
 ]
 
 const _ = require('lodash')
-const randomBear = _.sample(brownBearSpecies)
+const randomBear = _.sample(variousBrownBears)
 
 console.log(randomBear)
 ```
