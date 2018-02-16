@@ -9,19 +9,19 @@
   - Use npm to install and manage dependencies in projects and globally, on the local machine 
   - Build a basic server application from scratch
 
-## Framing (5 min, 0:05)
+## Framing (5 min, 10:05)
 
 Today we're going to embark on the next leg of our journey in learning fullstack web development. We've just learned to write client-side JavaScript that is loaded into our browsers via an HTML file.
 
 If we're not writing JavaScript *for* our browsers to run, then what exactly are we writing it for? You may have heard that Node JavaScript is server-side JavaScript, but why and how are we concerned with servers as web developers? 
 
-## Turn & Talk (5 min, 0:10)
+## Turn & Talk (5 min, 10:10)
 
 With a person next to you, spend 2-3 minutes talking about what a server does, or what things you associate with the server. Please feel free to search on the web, if you feel like don't.
 
 Afterwards, we'll share and discuss how this relates to full stack web development.
 
-## The Role of the Server (5 min, 0:15)
+## The Role of the Server (5 min, 10:15)
 
 Ultimately, the job of a *server* is to **respond** to *client* **requests**. If a server application receives a request it can't fulfill, it still provides a response. If a server doesn't respond with anything, we'll assume that it is down or that something has gone wrong with our connection.
 
@@ -33,9 +33,9 @@ The server still gives us feedback instead of no feedback at all.
 
 There is a 'contract' between servers and clients where a client makes requests to a server, which in turn responds to each request. This is a paradigm known as [request-response](https://en.wikipedia.org/wiki/Request%E2%80%93response). The rules laid down by this paradigm enforce a standard baseline for a reliable internet that we've seemingly grown to completely rely on.
 
-## HTTP (10 min, 0:25)
+## HTTP (10 min, 10:25)
 
-HTTP is the fundamental way that we receive and transmit data to and from websites. When we visit a website, we the URLs we type into our browsers' navigation bars start with `http` and `https`. Even if we don't type them in, our browsers will fill this in for us. HTTP stands for **hypertext transfer protocol**. HTTP is a protocol is built on  a kind of contract between clients and servers, that a server must provide some type of response to request from a client. In the case of this lesson, we are clients using a browser to connect to `git.generalassemb.ly`.
+HTTP is the fundamental way that we receive and transmit data to and from websites. When we visit a website, we the URLs we type into our browsers' navigation bars start with `http` or `https`. Even if we don't type them in, our browsers will fill this in for us. HTTP stands for **hypertext transfer protocol**. HTTP is a protocol built on  a kind of contract between clients and servers, that a server must provide some type of response to a request from a client. In the case of this lesson, we are clients using a browser to connect to `git.generalassemb.ly`.
 
 HTTP (1.1) is a stateless protocol which means that its connection doesn't have nor keeps track of its status. The connections simply open and close. A connection is established between the user's browser (the client) and the server when the user makes a request to the server. After the request is received, a server responds to the request somehow, with a webpage, an error page, some data, a file, etc, and then the connection is closed.
 
@@ -52,7 +52,7 @@ A stateful protocol, like a websocket connection, maintains an open connection i
   </ul>
 </details>
 
-### Requests (5 min, 0:30)
+### Requests (5 min, 10:30)
 
 Requests are actual entities in HTTP. They have a location or **URL**, like `google.com/` for example, and also have a **type**, which we refer to as a request **verb**. 
 
@@ -64,7 +64,7 @@ Whenever we navigate to a website, we are making a `GET` request. When we naviga
 
 [This is a fairly comprehensive list of the HTTP request verbs](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods)
 
-##### CRUD (10 min, 0:40)
+#### CRUD (10 min, 10:40)
 
 CRUD is an acronym for operations involving data: Create, Read, Update, and Destroy. These CRUD actions involve the server application interacting with the database to retrieve and/or change data.
 
@@ -79,7 +79,7 @@ CRUD is simply the set of features of an application that involve seeing and cha
 
 > Assume /tacos/6 refers to one variety of taco (e.g. carne asada) and /tacos/7 refers to another variety of taco (e.g. grilled cactus)
 
-#### Request & Response Headers & Bodies (5 min, 0:45)
+#### Request & Response Headers & Bodies (5 min, 10:45)
 
 [This is a fairly comprehensive list of the HTTP header fields](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields)
 
@@ -89,24 +89,24 @@ The request body will contain the 'payload' or the information to be transmitted
 
 Now that we've taken a closer look at the concerns of a web server application, let's talk about NodeJS, which will help us 
 
-## What is Node? (5 min, 0:50)
+## What is Node? (5 min, 10:50)
 
 Server-side JavaScript was implemented years ago in 1995 as Netscape's 'LiveWire' but it was a flop. Until recently, the concept of server-side JavaScript had been abandoned.
 
-Since 2009, NodeJS allows us to run our code independently of the browser. Node is an application runtime environment that uses the V8 JavaScript engine, just as chrome does Chrome. However, Node is specialized to handle functions that are unique to servers. Just as the browser environment provides developer with an interface for programmatically for handling user interface interactions, Node provides an environment useful for servers.
+Since 2009, NodeJS allows us to run our code independently of the browser. Node is an application runtime environment that uses the V8 JavaScript engine, just as Chrome does. However, Node is specialized to handle functions that are unique to servers. Just as the browser environment provides developers with an interface for programmatically for handling user interface interactions, Node provides an environment useful for servers.
 
 Node JavaScript is server-side JavaScript. Node software is running in a system environment, providing our JavaScript an environment to run independent of the browser. When we write server-side JavaScript, we're writing the logic of the server side aspect of our web applications. Speaking broadly, a server manages connections, stores data and static assets, and responds to user requests by serving webpages, data, files, etc.
 
 Node JavaScript is packaged up into modules. Let's create our first node project.
 
-## Break (10min, 1:00)
+## Break (10min, 11:00)
 
-## You Do: Your First Node Project (10min, 1:10)
+## You Do: Your First Node Project (10min, 11:10)
 
 ### Directions
 
 1. Navigate to your `sandbox` or another directory of your choosing.
-2. Create a new directory called `hello-node`.
+2. Create a new directory called `hello-node` and `cd` into it.
 3. Run `npm init` and answer each of the questions.
 4. Type `ls`. What has changed? Remember you can use the `cat` command to print files to the CLI.
 5. Create a file called `index.js` and edit it in your text editor.
@@ -119,7 +119,7 @@ Node JavaScript is packaged up into modules. Let's create our first node project
 2. What file(s) appeared? What were the contents?
 3. How did the `node` command work?
 
-## We Do: Modules and Dependencies (15 min, 1:25)
+## We Do: Modules and Dependencies (15 min, 11:25)
 
 1. On the command line, in our node project directory run...
 
@@ -169,8 +169,11 @@ const variousBrownBears = require('./bears')
 
 5. Run `node index.js` from the command-line.
 
-## Building a Basic Server (60min)
+## Build Your Own NPM Module (35 min, 12:00) 
+[NPM Resume](https://git.generalassemb.ly/ga-wdi-exercises/npm-resume)
+
+## Building a Basic Server (30min, 12:30)
 
 [Node Server from Scratch](https://git.generalassemb.ly/ga-wdi-exercises/node-server-from-scratch)
 
-## Closing (5min)
+## Closing (Rest of Class)
