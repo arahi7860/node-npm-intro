@@ -35,7 +35,7 @@ There is a 'contract' between servers and clients where a client makes requests 
 
 ## HTTP (10 min, 0:25)
 
-HTTP is the fundamental way that we receive and transmit data to and from websites. When we visit a website, we the URLs we type into our browsers' navigation bars start with `http` and `https`. Even if we don't type them in, our browsers will fill this in for us. HTTP stands for **hypertext transfer protocol**. HTTP is a protocol is built on  a kind of contract between clients and servers, that a server must provide some type of response to request from a client. In the case of this lesson, we are clients using a browser to connect to `git.generalassemb.ly`.
+HTTP is the fundamental way that we receive and transmit data to and from websites. When we visit a website, we the URLs we type into our browsers' navigation bars start with `http` or `https`. Even if we don't type them in, our browsers will fill this in for us. HTTP stands for **hypertext transfer protocol**. HTTP is a protocol built on  a kind of contract between clients and servers, that a server must provide some type of response to a request from a client. In the case of this lesson, we are clients using a browser to connect to `git.generalassemb.ly`.
 
 HTTP (1.1) is a stateless protocol which means that its connection doesn't have nor keeps track of its status. The connections simply open and close. A connection is established between the user's browser (the client) and the server when the user makes a request to the server. After the request is received, a server responds to the request somehow, with a webpage, an error page, some data, a file, etc, and then the connection is closed.
 
@@ -64,7 +64,7 @@ Whenever we navigate to a website, we are making a `GET` request. When we naviga
 
 [This is a fairly comprehensive list of the HTTP request verbs](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods)
 
-##### CRUD (10 min, 0:40)
+#### CRUD (10 min, 0:40)
 
 CRUD is an acronym for operations involving data: Create, Read, Update, and Destroy. These CRUD actions involve the server application interacting with the database to retrieve and/or change data.
 
@@ -93,7 +93,7 @@ Now that we've taken a closer look at the concerns of a web server application, 
 
 Server-side JavaScript was implemented years ago in 1995 as Netscape's 'LiveWire' but it was a flop. Until recently, the concept of server-side JavaScript had been abandoned.
 
-Since 2009, NodeJS allows us to run our code independently of the browser. Node is an application runtime environment that uses the V8 JavaScript engine, just as chrome does Chrome. However, Node is specialized to handle functions that are unique to servers. Just as the browser environment provides developer with an interface for programmatically for handling user interface interactions, Node provides an environment useful for servers.
+Since 2009, NodeJS allows us to run our code independently of the browser. Node is an application runtime environment that uses the V8 JavaScript engine, just as Chrome does. However, Node is specialized to handle functions that are unique to servers. Just as the browser environment provides developers with an interface for programmatically for handling user interface interactions, Node provides an environment useful for servers.
 
 Node JavaScript is server-side JavaScript. Node software is running in a system environment, providing our JavaScript an environment to run independent of the browser. When we write server-side JavaScript, we're writing the logic of the server side aspect of our web applications. Speaking broadly, a server manages connections, stores data and static assets, and responds to user requests by serving webpages, data, files, etc.
 
@@ -106,7 +106,7 @@ Node JavaScript is packaged up into modules. Let's create our first node project
 ### Directions
 
 1. Navigate to your `sandbox` or another directory of your choosing.
-2. Create a new directory called `hello-node`.
+2. Create a new directory called `hello-node` and `cd` into it.
 3. Run `npm init` and answer each of the questions.
 4. Type `ls`. What has changed? Remember you can use the `cat` command to print files to the CLI.
 5. Create a file called `index.js` and edit it in your text editor.
@@ -169,7 +169,10 @@ const variousBrownBears = require('./bears')
 
 5. Run `node index.js` from the command-line.
 
-## Building a Basic Server (60min)
+## Build Your Own NPM Module
+[NPM Resume](https://git.generalassemb.ly/ga-wdi-exercises/npm-resume)
+
+## Building a Basic Server (30min)
 
 [Node Server from Scratch](https://git.generalassemb.ly/ga-wdi-exercises/node-server-from-scratch)
 
