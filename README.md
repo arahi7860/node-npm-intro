@@ -11,13 +11,13 @@
 
 ## Framing (5 min, 10:05)
 
-Today we're going to embark on the next leg of our journey in learning fullstack web development. We've just learned to write client-side JavaScript that is loaded into our browsers via an HTML file.
+Today we're going to embark on the next leg of our journey in learning fullstack web development. So far we've just learned to write client-side JavaScript that is loaded into our browsers via an HTML file.
 
 If we're not writing JavaScript *for* our browsers to run, then what exactly are we writing it for? You may have heard that Node JavaScript is server-side JavaScript, but why and how are we concerned with servers as web developers? 
 
 ## Turn & Talk (5 min, 10:10)
 
-With a person next to you, spend 2-3 minutes talking about what a server does, or what things you associate with the server. Please feel free to search on the web, if you feel like don't.
+With a person next to you, spend 2-3 minutes talking about what a server does, or what things you associate with the server. Please feel free to search on the web. Post your thoughts on an issue on this repo.
 
 Afterwards, we'll share and discuss how this relates to full stack web development.
 
@@ -31,15 +31,15 @@ When we try to access a page that doesn't exist, we usually see a familiar error
 
 The server still gives us feedback instead of no feedback at all.
 
-There is a 'contract' between servers and clients where a client makes requests to a server, which in turn responds to each request. This is a paradigm known as [request-response](https://en.wikipedia.org/wiki/Request%E2%80%93response). The rules laid down by this paradigm enforce a standard baseline for a reliable internet that we've seemingly grown to completely rely on.
+There is a 'contract' between servers and clients where a *client makes requests to a server* and the *server responds to the request*. This is a paradigm known as [request-response](https://en.wikipedia.org/wiki/Request%E2%80%93response). The rules laid down by this paradigm enforce a standard baseline for a reliable internet we've all come to rely on. 
 
 ## HTTP (10 min, 10:25)
 
-HTTP is the fundamental way that we receive and transmit data to and from websites. When we visit a website, we the URLs we type into our browsers' navigation bars start with `http` or `https`. Even if we don't type them in, our browsers will fill this in for us. HTTP stands for **hypertext transfer protocol**. HTTP is a protocol built on  a kind of contract between clients and servers, that a server must provide some type of response to a request from a client. In the case of this lesson, we are clients using a browser to connect to `git.generalassemb.ly`.
+HTTP is the fundamental way that we receive and transmit data to and from websites. When we visit a website, the URLs we type into our browsers' navigation bars start with `http` or `https`. Even if we don't type `http` in, our browsers will fill this in for us. HTTP stands for **hypertext transfer protocol**. HTTP is a protocol built on  a kind of contract between clients and servers, that a server must provide some type of response to a request from a client. In the case of this lesson, we are clients using a browser to connect to `git.generalassemb.ly`.
 
-HTTP (1.1) is a stateless protocol which means that its connection doesn't have nor keeps track of its status. The connections simply open and close. A connection is established between the user's browser (the client) and the server when the user makes a request to the server. After the request is received, a server responds to the request somehow, with a webpage, an error page, some data, a file, etc, and then the connection is closed.
+HTTP 1.1 (what we are used to) is a stateless protocol which means that its connection doesn't keep track of its status. The connections simply open and close. A connection is established between the user's browser (the client) and the server when the user makes a request to the server. After the request is received, a server responds to the request with a webpage, an error page, some data, a file, etc, and then the connection is closed.
 
-A stateful protocol, like a websocket connection, maintains an open connection in a socket that listens for messages that are transmitted or 'pushed' to the socket. Think about notifications on your phone. A server 'pushes' these updates to your phone-- you don't have to request them. HTTP 2.0 has a request-push model which is a stateful connection protocol.
+A stateful protocol, like a websocket connection, maintains an open connection in a socket that listens for messages that are transmitted or 'pushed' to the socket. Think about notifications on your phone. A server 'pushes' these updates to your phone-- you don't have to request them. A socket connection is also used in a lot of chat applications and many `.io` games. HTTP 2.0 has a request-push model which is a stateful connection protocol.
 
 ### Additional Reading on TCP
 
@@ -60,13 +60,13 @@ A request also has a specific structure, containing a header and body.
 
 #### Request Verbs
 
-Whenever we navigate to a website, we are making a `GET` request. When we navigate to google we are making a `GET` request to `https:/www.google.com/`.
+Whenever we navigate to a website, we are making a `GET` request. When we navigate to google we are making a `GET` request to `https:/www.google.com/`. Most of the time we are using the web we are using `GET` requests. 
 
 [This is a fairly comprehensive list of the HTTP request verbs](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods)
 
 #### CRUD (10 min, 10:40)
 
-CRUD is an acronym for operations involving data: Create, Read, Update, and Destroy. These CRUD actions involve the server application interacting with the database to retrieve and/or change data.
+CRUD is an acronym for operations involving data: ***Create, Read, Update, and Destroy***. These CRUD actions involve the server application interacting with the database to retrieve and/or change data.
 
 CRUD is simply the set of features of an application that involve seeing and changing data. It is often how developers conceptualize reading and writing data in web applications, especially ones that involve a server persisting data in a database. We will be repeatedly implementing CRUD functionality in our apps during this course.
 
@@ -87,15 +87,17 @@ The header will contain meta-data, type of content the request body contains, au
 
 The request body will contain the 'payload' or the information to be transmitted, such as information from a form. Responses have headers and bodies as well and could contain the page or data requested, an error display page, etc.
 
-Now that we've taken a closer look at the concerns of a web server application, let's talk about NodeJS, which will help us 
+![Request Response Image src: http://www.oreilly.com/openbook/webclient/ch03.html](assets/request-response.gif)
+
+Now that we've taken a closer look at the concerns of a web server application, let's talk about NodeJS, which will help us run server-side code.
 
 ## What is Node? (5 min, 10:50)
 
 Server-side JavaScript was implemented years ago in 1995 as Netscape's 'LiveWire' but it was a flop. Until recently, the concept of server-side JavaScript had been abandoned.
 
-Since 2009, NodeJS allows us to run our code independently of the browser. Node is an application runtime environment that uses the V8 JavaScript engine, just as Chrome does. However, Node is specialized to handle functions that are unique to servers. Just as the browser environment provides developers with an interface for programmatically for handling user interface interactions, Node provides an environment useful for servers.
+Since 2009, NodeJS has allowed us to run our code independently of the browser. Node is an application runtime environment that uses the V8 JavaScript engine, just as Chrome does. However, Node is specialized to handle functions that are unique to servers. Just as the browser environment provides developers with an interface for programmatically handling user interface interactions, Node provides an environment useful for servers.
 
-Node JavaScript is server-side JavaScript. Node software is running in a system environment, providing our JavaScript an environment to run independent of the browser. When we write server-side JavaScript, we're writing the logic of the server side aspect of our web applications. Speaking broadly, a server manages connections, stores data and static assets, and responds to user requests by serving webpages, data, files, etc.
+Node JavaScript is server-side JavaScript. Node software is running in a system environment, providing our JavaScript an environment to run independent of the browser. When we write server-side JavaScript, we're writing the logic of the server side aspect for our web applications. Speaking broadly, a server manages connections, stores data and static assets, and responds to user requests by serving webpages, data, files, etc.
 
 Node JavaScript is packaged up into modules. Let's create our first node project.
 
@@ -169,7 +171,7 @@ const variousBrownBears = require('./bears')
 
 5. Run `node index.js` from the command-line.
 
-## We Do: Build Your Own NPM Module (35 min, 12:00) 
+## We Do: Build Your Own Node Package (35 min, 12:00) 
 [NPM Resume](https://git.generalassemb.ly/ga-wdi-exercises/npm-resume)
 
 ## I Do: Building a Basic Server (30min, 12:30)
