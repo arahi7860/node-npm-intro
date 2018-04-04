@@ -172,10 +172,10 @@ const variousBrownBears = require('./bears')
 5. Run `node index.js` from the command-line.
 
 ## We Do: Build Your Own Node Package (35 min, 12:00) 
-[NPM Resume](https://git.generalassemb.ly/ga-wdi-exercises/npm-resume)
+[NPM Resume](https://git.generalassemb.ly/dc-wdi-node-express/npm-resume)
 
 ## I Do: Building a Basic Server (30min, 12:30)
 
-[Node Server from Scratch](https://git.generalassemb.ly/ga-wdi-exercises/node-server-from-scratch)
+[Node Server from Scratch](https://git.generalassemb.ly/dc-wdi-node-express/node-server-from-scratch)
 
 ## Closing (Rest of Class)
