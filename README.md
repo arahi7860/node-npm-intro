@@ -24,7 +24,11 @@ In plain english, what does a server do? Spend 2-3 minutes discussing with your 
 
 ## The Role of the Server (10 min, 0:15)
 
-Ultimately, the job of a *server* is to **respond** to *client* **requests**. 
+The server provides as much functionality as we want it to. That can mean performing really resource-heavy computation (like with large amounts of data), reading and writing from a database, or responding to a request. 
+
+You don't want to do heavy-lifting in the browser, especially when dealing with mobile devices. So, we put our code on the server.
+
+In web development, the most common job of a *server* is to **respond** to *client* **requests**. 
 If a server application receives a request it can't fulfill, it still provides a response. 
 If a server doesn't respond with anything, we'll assume that it is down or that something has gone wrong with our connection.
 
@@ -121,7 +125,7 @@ NodeJS is packaged up into modules. Let's create our first node project.
 1. Navigate to your `sandbox` or another directory of your choosing.
 2. Create a new directory called `hello-node` and `cd` into it.
 3. Run `npm init` and answer each of the questions.
-4. Type `ls`. What has changed? Remember you can use the `cat` command to print files to the CLI.
+4. Type `ls`. What has changed? Remember you can use the `cat` command to print the contents of a file to the CLI.
 5. Create a file called `index.js` and edit it in your text editor.
 6. Console log 'hello world'.
 7. Create an array with at least three items, assign it to a variable, and console log it.
@@ -195,7 +199,7 @@ const variousBrownBears = require('./bears')
 ## We do: Reading and writing files (45 min / 2:10)
 
 Because is a server-side language we can do all kinds of neat things with reading and writing files, accessing folders on our computer, running processes, responding to HTTP requests, and all kinds of other things.
-Today we're just going to write to and read from a file, in some different formats.
+Today we're just going to write to and read from a file in the current directory.
 
 ### Write to a file
 
