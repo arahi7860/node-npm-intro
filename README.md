@@ -1,152 +1,170 @@
-# Intro to Server Applications, HTTP, NodeJS, and npm
+[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
-## Learning Objectives
+# Intro to Node and NPM
 
-  - Describe the role of the server
-  - Describe the request/response paradigm
-  - Identify high-level differences between server-side and client-side Javascript
-  - Export and import NodeJS modules
-  - Use npm to install and manage dependencies in projects and globally, on the local machine 
-  - Build a basic server application from scratch
+Learn about server-side JavaScript with Node and NPM.
 
-## Framing (5 min, 0:05)
+## Prerequisites
 
-Today we're going to embark on the next leg of our journey in learning fullstack web development. 
-So far we've just learned to write client-side JavaScript that is loaded into our browsers via an HTML file. 
-There hasn't been a server involved yet.
+* JavaScript
+* Command line
+* Have Node and NPM installed
 
-If we're not writing JavaScript *for* our browsers to run, then what exactly are we writing it for? 
-You may have heard that nodeJS is server-side JavaScript, but why and how are we concerned with servers as web developers?
+## Objectives
 
-## Discuss: What does a server do?
+By the end of this, developers should be able to:
 
-In plain english, what does a server do? Spend 2-3 minutes discussing with your peers and we'll review. 
+* Identify and discuss high-level differences between server-side and
+    client-side JavaScript
+* Import and export Node modules
+* Use npm to install and manage dependencies in projects and globally
+* Publish an npm module to the npm registry
 
-## The Role of the Server (10 min, 0:15)
+As a bonus, if there is time, we will discuss building a basic server
+application from scratch using Node.
 
-The server provides as much functionality as we want it to. That can mean performing really resource-heavy computation (like with large amounts of data), reading and writing from a database, or responding to a request. 
+## Introduction
 
-You don't want to do heavy-lifting in the browser, especially when dealing with mobile devices. So, we put our code on the server.
+Today, we're going to embark on the next leg of our journey in learning full
+stack web development. So far we've just learned to write client-side JavaScript
+that is loaded into our browsers via an HTML file. There hasn't been a server
+involved at all, yet.
 
-In web development, the most common job of a *server* is to **respond** to *client* **requests**. 
-If a server application receives a request it can't fulfill, it still provides a response. 
-If a server doesn't respond with anything, we'll assume that it is down or that something has gone wrong with our connection.
+If we're not writing JavaScript *for* our browsers to run, then what exactly are
+we writing it for? You may have heard that node is server-side JavaScript,
+but why and how are we concerned with servers as web developers?
+
+### Turn and Talk
+
+Turn to your neighbor and discuss the following questions:
+
+* In plain English, what does a server do?
+
+## The Role of the Server
+
+The server provides as much functionality as we want it to. That can mean
+performing really resource-heavy computation (like with large amounts of data),
+reading and writing from a database, or responding to a request.
+
+You don't want to do heavy-lifting in the browser, especially when dealing with
+mobile devices, because those heavy-lifting tasks will require a lot of
+resources. So, we put that code on the server.
+
+In web development, the most common job of a *server* is to **respond** to
+*client* **requests**.  If a server application receives a request it can't
+fulfill, it still provides a response.  If a server doesn't respond with
+anything, we'll assume that it is down or that something has gone wrong with our
+connection.
 
 ![client-server](./assets/client-server.png)
 
-There is a 'contract' between servers and clients where a *client makes requests to a server* and the *server responds to the request*. 
-This is a paradigm known as [request-response](https://en.wikipedia.org/wiki/Request%E2%80%93response). 
-The rules laid down by this paradigm enforce a standard baseline for a reliable internet we've all come to rely on. 
+There is a 'contract' between servers and clients where a *client makes requests
+to a server* and the *server responds to the request*. This is a paradigm known
+as [request-response](https://en.wikipedia.org/wiki/Request%E2%80%93response).
+The rules laid down by this paradigm enforce a standard baseline for a reliable
+internet we've all come to enjoy.
 
-In a practical sense, every time you visit a website (like `google.com`) you're seeing what's been requested and returned from a server. 
+In a practical sense, every time you visit a website (like `http://google.com`)
+you're seeing what's been requested and returned from a server.
 
-What we've done so far is write our code in files and opened them locally - what if we wanted someone else to be able to view our site? Well we could email them I guess (sounds terrible). 
+So far, all our applications have run entirely in the browser. We did deploy
+them, so users could use our applications from anywhere. But, the code for our
+application was only executed in their browser, with no connection to anyone
+else using our application. Very, very few applications work like that in the
+real world.
 
-OR
+So how do we make applications in such a way that different users can interact
+with each other through them from different clients?
 
-We could set up a server to send that html/css/javascript to each person that visits it. Then we have control over what happens on both ends. 
+We use a server!
 
-<!--
+## What is Node?
 
-## HTTP (10 min, 10:25)
+Node is a server-side runtime of JavaScript.
 
-HTTP is the fundamental way that we receive and transmit data to and from websites. When we visit a website, the URLs we type into our browsers' navigation bars start with `http` or `https`. Even if we don't type `http` in, our browsers will fill this in for us. HTTP stands for **hypertext transfer protocol**. HTTP is a protocol built on  a kind of contract between clients and servers, that a server must provide some type of response to a request from a client. In the case of this lesson, we are clients using a browser to connect to `git.generalassemb.ly`.
+What does that mean? To answer that, we have to rethink our understanding of
+JavaScript.
 
-HTTP 1.1 (what we are used to) is a stateless protocol which means that its connection doesn't keep track of its status. The connections simply open and close. A connection is established between the user's browser (the client) and the server when the user makes a request to the server. After the request is received, a server responds to the request with a webpage, an error page, some data, a file, etc, and then the connection is closed.
+Most programming languages have different versions of the language. As new
+features are rolled out, they are released in a new version of the language.
+JavaScript has this as well, but is unique in that JavaScript is run in multiple
+different environments. So there isn't just one "JavaScript", there are many.
 
-A stateful protocol, like a websocket connection, maintains an open connection in a socket that listens for messages that are transmitted or 'pushed' to the socket. Think about notifications on your phone. A server 'pushes' these updates to your phone-- you don't have to request them. A socket connection is also used in a lot of chat applications and many `.io` games. HTTP 2.0 has a request-push model which is a stateful connection protocol.
+The implementations of JavaScript are different in different browsers, i.e. the
+language is different in Chrome, Fire Fox, Internet Explorer, etc. Each
+implementation follows the same specification, which is maintained and updated
+by a central committee called TC39, but each vendor is in charge of their own
+implementation.
 
-### Additional Reading on TCP
+While nowadays, these implementations are largely standardized, there are still
+some differences. For instance, the `forEach` method is implemented on NodeLists
+in all major browsers except Internet Explorer!
 
-<details>
-  <summary>HTTP over TCP</summary>
-  <p> HTTP operates over TCP. When we navigate to a website, a TCP connection is established at a specific port, which is almost always going to be port <code>80</code> for <code>http</code> or <code>443</code> with <code>https</code>. </p>
-  <ul>
-    <li>https://www.diffen.com/difference/TCP_vs_UDP</li>
-    <li>https://www.quora.com/Why-does-Netflix-use-TCP-and-not-UDP-for-its-streaming-video</li>
-  </ul>
-</details>
+[Node](https://nodejs.org/), then, is just another implementation of the
+JavaScript specification.
 
-### Requests (5 min, 10:30)
+What's important about Node, though, and what makes it a little different from
+the browser implementations, is that it is aimed at running JavaScript in
+a server environment, not a browser!
 
-Requests are actual entities in HTTP. They have a location or **URL**, like `google.com/` for example, and also have a **type**, which we refer to as a request **verb**. 
+That means there are some practical differences in how we write JavaScript in
+Node versus for a browser. It also means there is a lot of server specific
+functionality that will only work in Node.
 
-A request also has a specific structure, containing a header and body.
+### [Seeing the Difference](https://git.generalassemb.ly/dc-wdi-node-express/browser-server-js)
 
-#### Request Verbs
+Let's explore the similarities and differences between JavaScript in the browser
+(which you're already familiar and comfortable with) and on the Server (what
+we're learning now). Work through [this
+exercise](https://git.generalassemb.ly/dc-wdi-node-express/browser-server-js)
 
-Whenever we navigate to a website, we are making a `GET` request. When we navigate to google we are making a `GET` request to `https:/www.google.com/`. Most of the time we are using the web we are using `GET` requests. 
+## Your First Node Application
 
-[This is a fairly comprehensive list of the HTTP request verbs](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods)
+We're going to explore working with Node and npm in our `sandbox` directory.
 
-#### CRUD (10 min, 10:40)
+### Instructions
 
-CRUD is an acronym for operations involving data: ***Create, Read, Update, and Destroy***. These CRUD actions involve the server application interacting with the database to retrieve and/or change data.
+1. Navigate to your `sandbox`
+1. Create a new directory called `hello-node` and `cd` into it.
+1. Run `npm init` and answer each of the questions.
+1. Type `ls`. What has changed? Remember you can use the `cat` command to print
+   the contents of a file to the CLI.
+1. Create a file called `index.js` and edit it in your text editor.
+1. Console log 'hello world'.
+1. Create an array with at least three items, assign it to a variable, and
+   console log it.
+1. Create an object with at least two properties, assign it to a variable, and
+   console log it.
+1. In your command line and enter the command `node index.js`. Make sure you're
+   in the same directory as the file you're trying to run.
 
-CRUD is simply the set of features of an application that involve seeing and changing data. It is often how developers conceptualize reading and writing data in web applications, especially ones that involve a server persisting data in a database. We will be repeatedly implementing CRUD functionality in our apps during this course.
+**Review Questions:**
 
-|CRUD   |  Verb   |URL Path examples|Database Action|
-|-------|---------|-----------------|--------------|
-|READ   |GET      |  `/tacos`       | Retrieve data|
-|CREATE |POST     |  `/tacos`       | Create new data|
-|UPDATE |PUT/PATCH|  `/tacos/6`     | Update existing data|
-|DESTROY|DELETE   |  `/tacos/7`     | Delete existing data|
+* What did `npm init` do? Why did we have to run it?
+* What file(s) appeared? What purpose did they serve?
+* What does the `node` command do?
 
-> Assume /tacos/6 refers to one variety of taco (e.g. carne asada) and /tacos/7 refers to another variety of taco (e.g. grilled cactus)
+## Working with Modules and Dependencies
 
-#### Request & Response Headers & Bodies (5 min, 10:45)
+We use npm and the `package.json` file it creates to manage our project. Most
+importantly, we use it to manage **project dependencies.**
 
-[This is a fairly comprehensive list of the HTTP header fields](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields)
+Dependencies are modules or libraries of code, separate from our application,
+that our application relies on in order to function. It's a way for us to reuse
+code, either written by ourselves or someone else.
 
-The header will contain meta-data, type of content the request body contains, authentication data related to logins, cookies, the status code (like `200`, `404` `500`, `418`) and many other things.
+### Instructions
 
-The request body will contain the 'payload' or the information to be transmitted, such as information from a form. Responses have headers and bodies as well and could contain the page or data requested, an error display page, etc.
+> Still in your `hello-node` directory
 
-![Request Response Image src: http://www.oreilly.com/openbook/webclient/ch03.html](assets/request-response.gif)
-
-Now that we've taken a closer look at the concerns of a web server application, let's talk about NodeJS, which will help us run server-side code.
-
--->
-
-## What is Node? (5 min, 0:20)
-
-Server-side JavaScript was implemented years ago in 1995 as Netscape's 'LiveWire' but never took off. Also Netscape died. Until recently, the concept of server-side JavaScript had been abandoned.
-
-Since 2009, NodeJS has allowed us to run our code independently of the browser. Node is an application runtime environment that runs inside the V8 JavaScript engine, just as Chrome does. However, Node is specialized to handle functions that are unique to servers. Just as the browser environment provides methods to interface with websites (like working with the DOM), Node provides an environment useful for servers (like reading and writing files, and http requests). 
-
-NodeJS is JavaScript, but it runs on the server. When you're writing node, you're writing javascript. Node runs in a system environment (in this case, your laptop is acting as the server) as opposed to running in chrome, or firefox or whatever browser. 
-
-NodeJS is packaged up into modules. Let's create our first node project.
-
-## You Do: Your First Node Application (10min, 0:30)
-
-### Directions
-
-1. Navigate to your `sandbox` or another directory of your choosing.
-2. Create a new directory called `hello-node` and `cd` into it.
-3. Run `npm init` and answer each of the questions.
-4. Type `ls`. What has changed? Remember you can use the `cat` command to print the contents of a file to the CLI.
-5. Create a file called `index.js` and edit it in your text editor.
-6. Console log 'hello world'.
-7. Create an array with at least three items, assign it to a variable, and console log it.
-8. Create an object with at least two properties, assign it to a variable, and console log it.
-9. In your command line and enter the command `node index.js`. Make sure you're in the same directory as the file you're trying to run.
-
-### Review
-
-1. What did `npm init` do?
-2. What file(s) appeared? What were the contents?
-3. How did the `node` command work?
-
-## We Do: Modules and Dependencies (15 min, 0:45)
-
-1. On the command line, in our node project directory run...
+1. In the command line, in your project directory, run:
 
 ```sh
- $ npm install lodash
+npm install lodash
 ```
 
-2. In `index.js`...
+2. In `index.js`:
+
 ```js
 const _ = require('lodash')
 
@@ -172,15 +190,16 @@ const randomBear = _.sample(variousBrownBears)
 console.log(randomBear)
 ```
 
-3. Next, let's create a new file called `bears.js` and add the array of brown bears, removing from `index.js`.
+3. Next, let's create a new file called `bears.js` and add the array of brown
+   bears, removing it from `index.js`.
 
-Add the following to bears.js...
+Add the following to `bears.js`:
 
 ```js
 module.exports = variousBrownBears
 ```
 
-4. Then, in `index.js` add...
+4. Then, in `index.js` add the following:
 
 ```js
 const variousBrownBears = require('./bears')
@@ -188,80 +207,99 @@ const variousBrownBears = require('./bears')
 
 5. Run `node index.js` from the command-line.
 
-## We Do: Build Your Own Node Package (30 min, 1:15)
-[NPM Resume](https://git.generalassemb.ly/dc-wdi-node-express/npm-resume)
+**Review Questions:**
 
+* In your own words, describe what we just did
 
-<!-- ## I Do: Building a Basic Server (30min, 12:30) -->
-## Break (10 min / 1:25)
+## Working With the File System
 
-<!-- [Node Server from Scratch](https://git.generalassemb.ly/dc-wdi-node-express/node-server-from-scratch) -->
-## We do: Reading and writing files (45 min / 2:10)
+One of the key advantages to working on the server is being able to work with
+the file system. Working with the file systems is especially handy if we're
+using Node to build command line applications, which we can do because Node is
+not confined to the browser!
 
-Because is a server-side language we can do all kinds of neat things with reading and writing files, accessing folders on our computer, running processes, responding to HTTP requests, and all kinds of other things.
-Today we're just going to write to and read from a file in the current directory.
+Node comes with a module, called
+[`fs`](https://nodejs.org/dist/latest-v10.x/docs/api/fs.html), for working with
+the file system.
+
+### Set up
+
+1. Create a new folder in your `wdi/sandbox` directory, call it `node-fs`
+1. `cd` into `node-fs` and create a file called `index.js`
 
 ### Write to a file
 
-* Create a new folder in your `wdi/sandbox` directory. Call it `nodefiles`
-* `cd` to `nodefiles` and create a file called `index.js`
+We'll start by exploring how to create (i.e. write) files using Node. The method
+for doing so is part of the `fs` module and is called `writeFile`. 
 
-Let's look at the API docs for [fs.writeFile](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback) as reference.
+> Documentation for
+> [fs.writeFile](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback)
 
+Update your `index.js` file with this code snippet:
 
 ```js
 const fs = require('fs')
 
-// fs is the node filesystem module. we're importing it from the node standard library which is always in scope
+// fs is the node filesystem module. We're importing it from the node standard
+// library, which is always in scope
 
 fs.writeFile('./file.txt', 'hello world', (err) => {
   if(err) {
     console.error(error)
-  }
-  else {
+  } else {
     console.log('done')
   }
 })
 ```
-Let's break this down.
+Let's break this down:
 
-* We first import fs, and save it to a variable using `require()`.
-* the first argument is the path to the file we want to write.
-* the second argument is the data we want to write - in this case just a string that says `hello world`.
-* the last argument is the `callback` function, or a function that runs when the writing is complete.
+1. We first import `fs`, and save it to a variable using `require()`
+1. The first argument is the path to the file we want to write
+1. The second argument is the data we want to write. In this case, just a string
+   that says `hello world`
+1. The last argument is a `callback` function, or a function that runs when the
+   writing is complete
 
-Go ahead and run this file in your terminal by typing `node index.js`. What happened?
+Go ahead and run this file in your terminal by typing `node index.js`.
 
-### Read from a file
+#### Turn & Talk
 
-Awesome, so we have written some data to a file. How can we get the contents of it?
+Turn and discuss what just happened with your neighbor.
 
-Comment out the writefile function call and add this below:
+### Read From a File
+
+So, we've written some data to a file. How can we get the contents of it?
+
+Comment out the code to for `writeFile` and add the following below:
+
 ```js
 fs.readFile('./file.txt', 'utf8', (err, data) => {
   if(err) {
     console.error(err)
-  }
-  else {
+  } else {
     console.log(data)
   }
 })
 ```
 
-This looks very similar to the writefile syntax, but with some different arguments.
+This looks very similar to the `writefile` syntax, but with some different
+arguments:
 
-* argument 1 is the path to the file we want to read.
-* argument 2 is the `encoding` of the file. If you don't specify the encoding, what happens?
-* argument 3 is the callback function again - it takes two arguments - error and data.
+1. Argument 1 is the path to the file we want to read
+1. Argument 2 is the `encoding` of the file. If you don't specify the encoding,
+   what happens?
+1. Argument 3 is the callback function again. It takes two arguments: `error`
+   and `data`.
 
 This is great and all, but can't we do more than hello world? Why yes, yes we can.
 
+### Parsing & Stringifying JSON
 
-### Parsing + Stringifying JSON
+Enter JSON: [JavaScript Object Notation](https://en.wikipedia.org/wiki/JSON).
+It's a format that looks very similar to JavaScript objects, so it's easy to
+read and write by hand (if we want to).
 
-Enter JSON - [Javascript Object Notation](https://en.wikipedia.org/wiki/JSON). It's a format that looks very similar to javascript objects, so it's easy to read and write by hand (if we want to).
-
-Let's create a plain old javascript object in our `index.js` file.
+Let's create a plain old JavaScript object in our `index.js` file:
 
 ```js
 let pojo = {
@@ -272,7 +310,7 @@ let pojo = {
 }
 ```
 
-Now we have a nice regular JS object. Let's turn it into a JSON string.
+Now we have a nice regular JavaScript object. Let's turn it into a JSON string:
 
 ```js
 let jsonString = JSON.stringify(pojo)
@@ -280,15 +318,15 @@ let jsonString = JSON.stringify(pojo)
 
 If we console log `jsonString` we will see something like this:
 
-```
+```js
 {"animal":false,"name":"peter obvarious jones otlewski","password":"shenanigan174","hobbies":["reading","writing","snowboarding","cat petting"]}
 ```
 
 Now we can take this and write it into the file.
 
-> Why can't we just write a javascript object directly to the file?
-
-Comment out the readfile function and uncomment the writefile. Move it below the object declaration. Then, swap out `'hello world'` with the `jsonString` variable.
+Comment out the `readfile` function and uncomment the `writefile`. Move it below the
+object declaration. Then, swap out `'hello world'` with the `jsonString`
+variable.
 
 Now your whole file should look something like this:
 
@@ -320,16 +358,24 @@ fs.writeFile('./file.txt', jsonString, (err) => {
 })
 ```
 
-Run the script again in your terminal, and check the results in file.txt
+Run the script again in your terminal, and check the results in `file.txt`.
 
-## You do: Modifying a json file (20 min / 2:30)
+## [Build Your Own Node Module](https://git.generalassemb.ly/dc-wdi-node-express/npm-resume)
 
-Let's combine everything we've just covered.
+Let's build off of our work with `fs` and JSON and build out your resume as
+a node module and publish it to the npm registry! Work through [this
+repository](https://git.generalassemb.ly/dc-wdi-node-express/npm-resume).
 
-The objective here is to be able to read the contents of a file, parse that into json, modify the object in some way, and then write the changes back to the file. 
-Use fs.readFile, fs.writeFile, JSON.stringify, and JSON.parse to accomplish your task.
+## Additional Resources
 
-Because readfile and writefile are asynchronous, this may not be as straightforward as you think.
+* [Node.js Documentation](https://nodejs.org/en/)
+* [W3 Schools: Getting Started with
+    Node](https://www.w3schools.com/nodejs/nodejs_get_started.asp)
+* [Rising Stack](https://blog.risingstack.com/) - A really great resource for
+    Node
 
-Try putting writeFile inside of the readFile callback, to ensure it happens in the correct order. 
+## [License](LICENSE)
 
+1. All content is licensed under a CC­BY­NC­SA 4.0 license.
+1. All software code is licensed under GNU GPLv3. For commercial use or
+    alternative licensing, please contact legal@ga.co.
