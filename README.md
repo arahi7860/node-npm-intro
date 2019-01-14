@@ -153,6 +153,38 @@ Dependencies are modules or libraries of code, separate from our application,
 that our application relies on in order to function. It's a way for us to reuse
 code, either written by ourselves or someone else.
 
+The `package.json` file is used to describe details about our project - one of those details is the project's dependencies. They're stored in a key in the file called `dependencies`!
+
+Here's what a typical `package.json` dependency might look like for a medium-sized project:
+
+```json
+"dependencies": {
+  "bcrypt-nodejs": "0.0.3",
+  "body-parser": "^1.18.2",
+  "connect-flash": "^0.1.1",
+  "cookie-parser": "^1.4.3",
+  "express": "^4.16.2",
+  "express-session": "^1.15.6",
+  "hbs": "^4.0.1",
+  "method-override": "^2.3.10",
+  "mongoose": "^5.0.7",
+  "passport": "^0.4.0",
+  "passport-local": "^1.0.0"
+}
+```
+
+### Aside: node_modules and .gitignore
+
+Let's say we want to work on someone else's project. We clone it down to our computer, and then open it up and start exploring the file structure. You've already done this with the first JS checkpoint.
+
+It's got various javascript files, and also a `package.json` file describing all the modules needed to run the code.
+
+Since `package.json` is a list of all of our dependencies, where do those files all actually live? In the `node_modules` folder. Wait - there's no `node_modules` folder!
+
+In order to **install** all of the dependencies, we run the command `npm install` in the directory we cloned down. This command goes to the npm server and downloads a bunch of javascript files and puts them into the `node_modules` folder.
+
+Since we have a list of dependencies in the `package.json` file, and anyone that clones a project down can simply download all the dependencies, we don't want to include them in our git history. This is where the `.gitignore` comes in.
+
 ### Instructions
 
 > Still in your `hello-node` directory
@@ -163,7 +195,20 @@ code, either written by ourselves or someone else.
 npm install lodash
 ```
 
-2. In `index.js`:
+Note what happened. A folder called `node_modules` appeared!
+
+We don't want git to track all the node modules files. There are way too many and it bloats the size of our project.
+
+2. Create a file called `.gitignore` in the root of your project directory.
+> `touch .gitignore`
+
+3. Open `.gitignore` and type `node_modules` into it.
+
+4. You're done! 
+
+You can put the names of any files or folders in the `.gitignore` file. They will all be ignored. They won't be deleted from git though - you must use `git rm` for that.
+
+5. In `index.js`:
 
 ```js
 const _ = require('lodash')
@@ -190,7 +235,7 @@ const randomBear = _.sample(variousBrownBears)
 console.log(randomBear)
 ```
 
-3. Next, let's create a new file called `bears.js` and add the array of brown
+6. Next, let's create a new file called `bears.js` and add the array of brown
    bears, removing it from `index.js`.
 
 Add the following to `bears.js`:
