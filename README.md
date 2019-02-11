@@ -375,17 +375,17 @@ variable.
 
 Now your whole file should look something like this:
 
-```diff
+```js
 const fs = require('fs')
 
-- fs.readFile('./file.txt', 'utf8', (err, data) => {
--   if(err) {
--     console.error(err)
--   }
--   else {
--     console.log(data)
--   }
-- })
+// fs.readFile('./file.txt', 'utf8', (err, data) => {
+//   if(err) {
+//     console.error(err)
+//   }
+//   else {
+//     console.log(data)
+//   }
+// })
 
 let pojo = {
   animal: false,
