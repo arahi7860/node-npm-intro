@@ -290,7 +290,7 @@ const fs = require('fs')
 
 fs.writeFile('./file.txt', 'hello world', (err) => {
   if(err) {
-    console.error(error)
+    console.error(err)
   } else {
     console.log('done')
   }
@@ -375,17 +375,17 @@ variable.
 
 Now your whole file should look something like this:
 
-```js
+```diff
 const fs = require('fs')
 
-// fs.readFile('./file.txt', 'utf8', (err, data) => {
-//   if(err) {
-//     console.error(err)
-//   }
-//   else {
-//     console.log(data)
-//   }
-// })
+- fs.readFile('./file.txt', 'utf8', (err, data) => {
+-   if(err) {
+-     console.error(err)
+-   }
+-   else {
+-     console.log(data)
+-   }
+- })
 
 let pojo = {
   animal: false,
@@ -394,11 +394,13 @@ let pojo = {
   hobbies: ['reading', 'writing', 'snowboarding', 'cat petting']
 }
 
-let jsonString = JSON.stringify(pojo)
+let pojoJSON = JSON.stringify(pojo)
 
-fs.writeFile('./file.txt', jsonString, (err) => {
+fs.writeFile('./file.txt', pojoJSON, (err) => {
   if(err) {
-    console.error(error)
+    console.error(err)
+  } else {
+    console.log('done')
   }
 })
 ```
