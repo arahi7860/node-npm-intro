@@ -136,8 +136,7 @@ We're going to explore working with Node and npm in our `sandbox` directory.
    console log it.
 1. Create an object with at least two properties, assign it to a variable, and
    console log it.
-1. Write a DOM method like `document.querySelector()` and see what
-   happens.
+1. Write a DOM method like `document.querySelector()` and see what happens.
 1. In your command line and enter the command `node index.js`. Make sure you're
    in the same directory as the file you're trying to run.
 
@@ -145,6 +144,7 @@ We're going to explore working with Node and npm in our `sandbox` directory.
 
 - What does the `node` command do?
 - What happens with `document`? Can we fix that?
+- What if you type `node` just by itself?
 
 ## Working with Modules and Dependencies
 
@@ -241,7 +241,9 @@ git init
 
 You can put the names of any files or folders in the `.gitignore` file. They
 will all be ignored. They won't be deleted from git though - you must use
-`git rm` for that.
+`git rm` for that. For example, if you previously committed a `node_modules`
+folder, adding it to `.gitignore` doesn't delete the folder. It simply stops
+paying attention to it.
 
 5. In `index.js`:
 
@@ -299,7 +301,7 @@ using Node to build command line applications, which we can do because Node is
 not confined to the browser!
 
 Node comes with a module, called
-[`fs`](https://nodejs.org/dist/latest-v10.x/docs/api/fs.html), for working with
+[fs](https://nodejs.org/dist/latest-v10.x/docs/api/fs.html), for working with
 the file system.
 
 ### Set up
@@ -320,8 +322,9 @@ Update your `index.js` file with this code snippet:
 ```js
 const fs = require("fs")
 
-// fs is the node filesystem module. We're importing it from the node standard
-// library, which is always in scope
+/* 
+fs is the node filesystem module. We're importing it from the node standard library, which is always in scope (part of the standard node modules), so we don't provide a path at the beginning of the line.
+*/
 
 fs.writeFile("./file.txt", "hello world", err => {
   if (err) {
