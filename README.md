@@ -398,10 +398,10 @@ const pojo = {
 Now we have a nice regular JavaScript object. Let's turn it into a JSON string:
 
 ```js
-const pojoJsonString = JSON.stringify(pojo);
+const pojoJson = JSON.stringify(pojo);
 ```
 
-If we console log `pojoJsonString` we will see something like this:
+If we console log `pojoJson` we will see something like this:
 
 ```js
 {"animal": false,"name": "peter obvarious jones otlewski","password": "shenanigan174","hobbies": ["reading", "writing", "snowboarding", "cat petting"]}
@@ -410,7 +410,7 @@ If we console log `pojoJsonString` we will see something like this:
 Now we can take this and write it into the file.
 
 Comment out the `readfile` function and uncomment the `writefile`. Move it below
-the object declaration. Then, swap out `'hello world'` with the `jsonString`
+the object declaration. Then, swap out `'hello world'` with the `pojoJson`
 variable.
 
 Now your whole file should look something like this:
@@ -434,9 +434,9 @@ const pojo = {
   hobbies: ["reading", "writing", "snowboarding", "cat petting"]
 };
 
-const pojoJsonString = JSON.stringify(pojo);
+const pojoJson = JSON.stringify(pojo);
 
-fs.writeFile("./file.txt", pojoJSON, err => {
+fs.writeFile("./file.txt", pojoJson, err => {
   if (err) {
     console.error(err);
   } else {
