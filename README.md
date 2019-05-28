@@ -248,7 +248,7 @@ paying attention to it.
 5. In `index.js`:
 
 ```js
-const _ = require("lodash")
+const _ = require("lodash");
 
 const variousBrownBears = [
   "Atlas bear",
@@ -266,10 +266,10 @@ const variousBrownBears = [
   "Mexican grizzly bear",
   "East Siberian brown bear",
   "Syrian brown bear"
-]
+];
 
-const randomBear = _.sample(variousBrownBears)
-console.log(randomBear)
+const randomBear = _.sample(variousBrownBears);
+console.log(randomBear);
 ```
 
 6. Next, let's create a new file called `bears.js` and add the array of brown
@@ -278,13 +278,13 @@ console.log(randomBear)
 Add the following to `bears.js`:
 
 ```js
-module.exports = variousBrownBears
+module.exports = variousBrownBears;
 ```
 
 4. Then, in `index.js` add the following:
 
 ```js
-const variousBrownBears = require("./bears")
+const variousBrownBears = require("./bears");
 ```
 
 5. Run `node index.js` from the command-line.
@@ -320,7 +320,7 @@ for doing so is part of the `fs` module and is called `writeFile`.
 Update your `index.js` file with this code snippet:
 
 ```js
-const fs = require("fs")
+const fs = require("fs");
 
 /* 
 fs is the node filesystem module. We're importing it from the node standard library, which is always in scope (part of the standard node modules), so we don't provide a path at the beginning of the line.
@@ -328,11 +328,11 @@ fs is the node filesystem module. We're importing it from the node standard libr
 
 fs.writeFile("./file.txt", "hello world", err => {
   if (err) {
-    console.error(err)
+    console.error(err);
   } else {
-    console.log("done")
+    console.log("done");
   }
-})
+});
 ```
 
 Let's break this down:
@@ -359,11 +359,11 @@ Comment out the code to for `writeFile` and add the following below:
 ```js
 fs.readFile("./file.txt", "utf8", (err, data) => {
   if (err) {
-    console.error(err)
+    console.error(err);
   } else {
-    console.log(data)
+    console.log(data);
   }
-})
+});
 ```
 
 This looks very similar to the `writefile` syntax, but with some different
@@ -387,24 +387,29 @@ read and write by hand (if we want to).
 Let's create a plain old JavaScript object in our `index.js` file:
 
 ```js
-let pojo = {
+const pojo = {
   animal: false,
   name: "peter obvarious jones otlewski",
   password: "shenanigan174",
   hobbies: ["reading", "writing", "snowboarding", "cat petting"]
-}
+};
 ```
 
 Now we have a nice regular JavaScript object. Let's turn it into a JSON string:
 
 ```js
-let jsonString = JSON.stringify(pojo)
+const pojoJson = JSON.stringify(pojo);
 ```
 
-If we console log `jsonString` we will see something like this:
+If we console log `pojoJsonString` we will see something like this:
 
-```js
-{"animal":false,"name":"peter obvarious jones otlewski","password":"shenanigan174","hobbies":["reading","writing","snowboarding","cat petting"]}
+```json
+{
+  "animal": false,
+  "name": "peter obvarious jones otlewski",
+  "password": "shenanigan174",
+  "hobbies": ["reading", "writing", "snowboarding", "cat petting"]
+}
 ```
 
 Now we can take this and write it into the file.
@@ -416,7 +421,7 @@ variable.
 Now your whole file should look something like this:
 
 ```js
-const fs = require("fs")
+const fs = require("fs");
 
 // fs.readFile('./file.txt', 'utf8', (err, data) => {
 //   if(err) {
@@ -427,22 +432,22 @@ const fs = require("fs")
 //   }
 // })
 
-let pojo = {
+const pojo = {
   animal: false,
   name: "peter obvarious jones otlewski",
   password: "shenanigan174",
   hobbies: ["reading", "writing", "snowboarding", "cat petting"]
-}
+};
 
-let pojoJSON = JSON.stringify(pojo)
+const pojoJsonString = JSON.stringify(pojo);
 
 fs.writeFile("./file.txt", pojoJSON, err => {
   if (err) {
-    console.error(err)
+    console.error(err);
   } else {
-    console.log("done")
+    console.log("done");
   }
-})
+});
 ```
 
 Run the script again in your terminal, and check the results in `file.txt`. What
