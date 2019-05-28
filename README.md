@@ -403,13 +403,8 @@ const pojoJsonString = JSON.stringify(pojo);
 
 If we console log `pojoJsonString` we will see something like this:
 
-```json
-{
-  "animal": false,
-  "name": "peter obvarious jones otlewski",
-  "password": "shenanigan174",
-  "hobbies": ["reading", "writing", "snowboarding", "cat petting"]
-}
+```js
+{"animal": false,"name": "peter obvarious jones otlewski","password": "shenanigan174","hobbies": ["reading", "writing", "snowboarding", "cat petting"]}
 ```
 
 Now we can take this and write it into the file.
