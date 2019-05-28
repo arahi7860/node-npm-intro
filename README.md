@@ -398,7 +398,7 @@ const pojo = {
 Now we have a nice regular JavaScript object. Let's turn it into a JSON string:
 
 ```js
-const pojoJson = JSON.stringify(pojo);
+const pojoJsonString = JSON.stringify(pojo);
 ```
 
 If we console log `pojoJsonString` we will see something like this:
