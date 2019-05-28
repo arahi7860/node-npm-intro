@@ -18,6 +18,7 @@ By the end of this, developers should be able to:
   client-side JavaScript
 - Import and export Node modules
 - Use npm to install and manage dependencies in projects and globally
+- Use Node to work with the file system
 - Publish an npm module to the npm registry
 
 As a bonus, if there is time, we will discuss building a basic server
@@ -31,7 +32,7 @@ that is loaded into our browsers via an HTML file. There hasn't been a server
 involved at all, yet.
 
 If we're not writing JavaScript _for_ our browsers to run, then what exactly are
-we writing it for? You may have heard that node is server-side JavaScript, but
+we writing it for? You may have heard that Node is server-side JavaScript, but
 why and how are we concerned with servers as web developers?
 
 ### Turn and Talk
