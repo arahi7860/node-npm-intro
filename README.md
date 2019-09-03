@@ -307,7 +307,7 @@ the file system.
 
 ### Set up
 
-1. Create a new folder in your `wdi/sandbox` directory, call it `node-fs`
+1. Create a new folder in your `sandbox` directory, call it `node-fs`
 1. `cd` into `node-fs` and create a file called `index.js`
 
 ### Write to a file
@@ -438,9 +438,8 @@ const pojo = {
 const pojoJson = JSON.stringify(pojo);
 
 fs.writeFile("./file.txt", pojoJson, err => {
-  if (err) {
-    console.error(err);
-  } else {
+  /** another way to log the error message */
+    if (err) throw err;
     console.log("done");
   }
 });
