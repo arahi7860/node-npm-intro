@@ -27,9 +27,10 @@ application from scratch using Node.
 ## Introduction
 
 Today, we're going to embark on the next leg of our journey in learning full
-stack web development. So far we've just learned to write client-side JavaScript
-that is loaded into our browsers via an HTML file. There hasn't been a server
-involved at all, yet.
+stack web development. So far, we've just learned to write client-side JavaScript
+that is loaded into our browsers via an HTML file. We have also used React to create 
+more dynamic client-side applications that run in the browser. There's another kind of 
+JavaScript that we have yet to learn.
 
 If we're not writing JavaScript _for_ our browsers to run, then what exactly are
 we writing it for? You may have heard that Node is server-side JavaScript, but
