@@ -442,7 +442,6 @@ fs.writeFile("./file.txt", pojoJson, err => {
   /** another way to log the error message */
     if (err) throw err;
     console.log("done");
-  }
 });
 ```
 
@@ -450,7 +449,7 @@ Run the script again in your terminal, and check the results in `file.txt`. What
 happens if you don't stringify it first? Try just writing the `pojo` object to
 the file and then look at it.
 
-## Bonus: [Build Your Own Node Module](https://git.generalassemb.ly/dc-wdi-node-express/npm-resume)
+## Lab: [Build Your Own Node Module](https://git.generalassemb.ly/dc-wdi-node-express/npm-resume)
 
 Let's build off of our work with `fs` and JSON and build out your resume as a
 node module and publish it to the npm registry! Work through
