@@ -458,7 +458,6 @@ node module and publish it to the npm registry! Work through
 ## Additional Resources
 
 - [Node.js Documentation](https://nodejs.org/en/)
-- [W3 Schools: Getting Started with Node](https://www.w3schools.com/nodejs/nodejs_get_started.asp)
 - [Rising Stack](https://blog.risingstack.com/) - A really great resource for
   Node
 
