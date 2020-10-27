@@ -21,9 +21,6 @@ By the end of this, developers should be able to:
 - Use Node to work with the file system
 - Publish an npm module to the npm registry
 
-As a bonus, if there is time, we will discuss building a basic server
-application from scratch using Node.
-
 ## Introduction
 
 Today, we're going to embark on the next leg of our journey in learning full
