@@ -21,39 +21,23 @@ If we're writing JavaScript for a website but it's not being run in the browser,
 
 ## The Role of the Server
 
-The server provides as much functionality as we want it to. That can mean
-performing really resource-heavy computation (like with large amounts of data),
-reading and writing from a database, or responding to a request.
-
-You don't want to do heavy-lifting in the browser, especially when dealing with
-mobile devices, because those heavy-lifting tasks will require a lot of
-resources. So, we put that code on the server.
-
-In web development, the most common job of a _server_ is to **respond** to
-_client_ **requests**. If a server application receives a request it can't
-fulfill, it still provides a response. If a server doesn't respond with
-anything, we'll assume that it is down or that something has gone wrong with our
-connection.
+In web development, the most common job of a _server_ is to **respond** to _client_ **requests**. 
+If a server application receives a request it can't fulfill, it still provides a response.
+If a server doesn't respond with anything, we'll assume that it is down or that something has gone wrong with our connection.
 
 ![client-server](./assets/client-server.png)
 
-There is a 'contract' between servers and clients where a _client makes requests
-to a server_ and the _server responds to the request_. This is a paradigm known
-as [request-response](https://en.wikipedia.org/wiki/Request%E2%80%93response).
-The rules laid down by this paradigm enforce a standard baseline for a reliable
-internet we've all come to enjoy.
+There is a 'contract' between servers and clients where a _client makes requests to a server_ and the _server responds to the request_.
+This is a paradigm known as [request-response](https://en.wikipedia.org/wiki/Request%E2%80%93response).
+The rules laid down by this paradigm enforce a standard baseline for a reliable internet we've all come to enjoy.
 
-In a practical sense, every time you visit a website (like `http://google.com`)
-you're seeing what's been requested and returned from a server.
+In a practical sense, every time you visit a website (like `http://google.com`) you're seeing what's been requested and returned from a server.
 
-So far, all our applications have run entirely in the browser. We did deploy
-them, so users could use our applications from anywhere. But, the code for our
-application was only executed in their browser, with no connection to anyone
-else using our application. Very, very few applications work like that in the
-real world.
+So far, all our web applications have run entirely in the browser. 
+We did deploy them, so users could use our applications from anywhere. 
+Very, very few applications work like that in the real world.
 
-So how do we make applications in such a way that different users can interact
-with each other through them from different clients?
+So how do we make applications in such a way that different users can interact with each other through them from different clients?
 
 We use a server!
 
@@ -61,13 +45,12 @@ We use a server!
 
 Node is a server-side runtime of JavaScript.
 
-What does that mean? To answer that, we have to rethink our understanding of
-JavaScript.
+What does that mean? To answer that, we have to rethink our understanding of JavaScript.
 
-Most programming languages have different versions of the language. As new
-features are rolled out, they are released in a new version of the language.
-JavaScript has this as well, but is unique in that JavaScript is run in multiple
-different environments. So there isn't just one "JavaScript", there are many.
+Most programming languages have different versions of the language. 
+As new features are rolled out, they are released in a new version of the language.
+JavaScript has this as well, but is unique in that JavaScript is run in multiple different environments.
+So there isn't just one "JavaScript", there are many.
 
 The implementations of JavaScript are different in different browsers, i.e. the
 language is different in Chrome, Firefox, Internet Explorer, etc. Each
@@ -75,24 +58,15 @@ implementation follows the same specification, which is maintained and updated
 by a central committee called TC39, but each vendor is in charge of their own
 implementation.
 
-While nowadays, these implementations are largely standardized, there are still
-some differences. For instance, the `forEach` method is implemented on NodeLists
-in all major browsers except Internet Explorer! So if you have some code that
-runs something like `document.querySelector('.class').forEach()`, it will throw
-an error on IE, because that browser doesn't have a method called `forEach`
-defined on that object.
-
-[Node](https://nodejs.org/), then, is just another implementation of the
-JavaScript specification.
+[Node](https://nodejs.org/), then, is just another implementation of the JavaScript specification.
 
 What's important about Node, though, and what makes it a little different from
 the browser implementations, is that it is aimed at running JavaScript in a
 server environment, not a browser!
 
-That means there are some practical differences in how we write JavaScript in
-Node versus for a browser. It also means there is a lot of server specific
-functionality that will only work in Node. Try `console.log(this)` in Node and 
-in the browser.
+That means there are some practical differences in how we write JavaScript in Node versus for a browser.
+It also means there is a lot of server specific functionality that will only work in Node. 
+For example, `console.log(this)` in Node and in the browser will give different results.
 
 ## Your First Node Application
 
@@ -120,19 +94,18 @@ We're going to explore working with Node and npm in our `sandbox` directory.
 
 ## Working with Modules and Dependencies
 
-We use npm and the `package.json` file it creates to manage our project. Most
-importantly, we use it to manage **project dependencies.**
+We use npm and the `package.json` file it creates to manage our project. 
+Most importantly, we use it to manage **project dependencies.**
 
 Dependencies are modules or libraries of code, separate from our application,
-that our application relies on in order to function. It's a way for us to reuse
-code, either written by ourselves or someone else.
+that our application relies on in order to function.
+It's a way for us to reuse code, either written by ourselves or someone else.
 
 The `package.json` file is used to describe details about our project - one of
-those details is the project's dependencies. They're stored in a key in the file
-called `dependencies`!
+those details is the project's dependencies.
+They're stored in a key in the file called `dependencies`!
 
-Here's what a typical `package.json` dependency might look like for a
-medium-sized project:
+Here's what a typical `package.json` dependency might look like for a medium-sized project:
 
 ```json
 "dependencies": {
@@ -141,12 +114,10 @@ medium-sized project:
   "connect-flash": "^0.1.1",
   "cookie-parser": "^1.4.3",
   "express": "^4.16.2",
-  "express-session": "^1.15.6",
   "hbs": "^4.0.1",
   "method-override": "^2.3.10",
   "mongoose": "^5.0.7",
-  "passport": "^0.4.0",
-  "passport-local": "^1.0.0"
+  "passport": "^0.4.0"
 }
 ```
 
@@ -292,35 +263,24 @@ for doing so is part of the `fs` module and is called `writeFile`.
 Update your `index.js` file with this code snippet:
 
 ```js
-const fs = require("fs");
+let fs = require("fs")
 
-/* 
-fs is the node filesystem module. We're importing it from the node standard library, which is always in scope (part of the standard node modules), so we don't provide a path at the beginning of the line.
-*/
-
-fs.writeFile("./file.txt", "hello world", err => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log("done");
+fs.writeFile("./file.txt", "hello world", 
+  error=> {
+    if (error) console.error(error) 
+    else console.log("Success!") 
   }
-});
+)
 ```
 
 Let's break this down:
 
-1. We first import `fs`, and save it to a variable using `require()`
-1. The first argument is the path and name of the file we want to write
-1. The second argument is the data we want to write. In this case, just a string
-   that says `hello world`
-1. The last argument is a `callback` function, or a function that runs when the
-   writing is complete
+1. We first import `fs`, and save it to a variable using `require()`.
+1. The first argument is the path and name of the file we want to write.
+1. The second argument is the data we want to write. In this case, just a string that says `hello world`.
+1. The last argument is a `callback` function, or a function that runs when the writing is complete.
 
 Go ahead and run this file in your terminal by typing `node index.js`.
-
-#### Turn & Talk
-
-Turn and discuss what just happened with your neighbor.
 
 ### Read From a File
 
@@ -329,13 +289,13 @@ So, we've written some data to a file. How can we get the contents of it?
 Comment out the code to for `writeFile` and add the following below:
 
 ```js
-fs.readFile("./file.txt", "utf8", (err, data) => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log(data);
+
+fs.readFile("./file.txt", "utf8", 
+  (error, data)=> {
+    if (error) console.error(error)
+    else console.log("Success: ", data)
   }
-});
+)
 ```
 
 This looks very similar to the `writefile` syntax, but with some different
@@ -388,31 +348,22 @@ variable.
 Now your whole file should look something like this:
 
 ```js
-const fs = require("fs");
-
-// fs.readFile('./file.txt', 'utf8', (err, data) => {
-//   if(err) {
-//     console.error(err)
-//   }
-//   else {
-//     console.log(data)
-//   }
-// })
+const fs = require("fs")
 
 const pojo = {
   animal: false,
   name: "peter obvarious jones otlewski",
   password: "shenanigan174",
   hobbies: ["reading", "writing", "snowboarding", "cat petting"]
-};
+}
 
-const pojoJson = JSON.stringify(pojo);
+const pojoJson = JSON.stringify(pojo)
 
-fs.writeFile("./file.txt", pojoJson, err => {
+fs.writeFile("./file.txt", pojoJson, error => {
   /** another way to log the error message */
-    if (err) throw err;
-    console.log("done");
-});
+    if (error) throw error
+    console.log("done")
+})
 ```
 
 Run the script again in your terminal, and check the results in `file.txt`. What
@@ -422,8 +373,8 @@ the file and then look at it.
 ## Lab: [Build Your Own Node Module](https://git.generalassemb.ly/dc-wdi-node-express/npm-resume)
 
 Let's build off of our work with `fs` and JSON and build out your resume as a
-node module and publish it to the npm registry! Work through
-[this repository](https://git.generalassemb.ly/dc-wdi-node-express/npm-resume).
+node module and publish it to the npm registry! 
+Work through [this repository](https://git.generalassemb.ly/dc-wdi-node-express/npm-resume).
 
 ## Additional Resources
 
