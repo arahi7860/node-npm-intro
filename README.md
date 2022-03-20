@@ -4,41 +4,20 @@
 
 Learn about server-side JavaScript with Node and NPM.
 
-## Prerequisites
-
-- JavaScript
-- Command line
-- Have Node and NPM installed
-
 ## Objectives
 
 By the end of this, developers should be able to:
 
-- Identify and discuss high-level differences between server-side and
-  client-side JavaScript
+- Understand the difference between server-side and client-side JavaScript
 - Import and export Node modules
-- Use npm to install and manage dependencies in projects and globally
+- Use npm to install and manage local and global dependencies
 - Use Node to work with the file system
 - Publish an npm module to the npm registry
 
 ## Introduction
 
-Today, we're going to embark on the next leg of our journey in learning full
-stack web development. So far, we've just learned to write client-side JavaScript
-that is loaded into our browsers via an HTML file. We have also used React to create 
-more dynamic client-side applications that run in the browser. There's another kind of 
-JavaScript that we have yet to learn.
-
-If we're not writing JavaScript _for_ our browsers to run, then what exactly are
-we writing it for? You may have heard that Node is server-side JavaScript, but
-why and how are we concerned with servers as web developers?
-
-### Turn and Talk
-
-Turn to your neighbor and discuss the following questions:
-
-- In plain English, what does a server do?
-- Have we had exposure to any servers so far? Give some examples.
+Today, we're going to embark on the next leg of our journey in learning full-stack web development: the back-end.
+If we're writing JavaScript for a website but it's not being run in the browser, then where is it running?
 
 ## The Role of the Server
 
