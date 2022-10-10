@@ -374,7 +374,7 @@ the file and then look at it.
 
 Let's build off of our work with `fs` and JSON and build out your resume as a
 node module and publish it to the npm registry! 
-Work through [this repository](https://git.generalassemb.ly/sei-axolotls/npm-resume).
+Work through [this repository](https://git.generalassemb.ly/sei-buffleheads/npm-resume).
 
 ## Additional Resources
 
