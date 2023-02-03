@@ -25,7 +25,10 @@ In web development, the most common job of a _server_ is to **respond** to _clie
 If a server application receives a request it can't fulfill, it still provides a response.
 If a server doesn't respond with anything, we'll assume that it is down or that something has gone wrong with our connection.
 
-![client-server](./assets/client-server.png)
+<!-- ![client-server](./assets/client-server.png) -->
+![client-server](./assets/client-server-arch.png)
+
+
 
 There is a 'contract' between servers and clients where a _client makes requests to a server_ and the _server responds to the request_.
 This is a paradigm known as [request-response](https://en.wikipedia.org/wiki/Request%E2%80%93response).
