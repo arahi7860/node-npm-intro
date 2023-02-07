@@ -1,4 +1,4 @@
-const fs = require('fs')
+import fs from 'fs'
 
 /* Node asks OS to read the file and waits for the result
 before executing any more code. */
@@ -22,11 +22,13 @@ fs.promises.readFile('./package.json', {
 
 /*  */
 async function main() {
-    const package = await fs.promises.readFile('./package.json', {
+    const package1 = await fs.promises.readFile('./package.json', {
         encoding: 'utf-8',
     })
 
-    console.log('fourth', package);
+    const json = JSON.parse(package1)
+
+    console.log('fourth', json);
 }
 
 main()
